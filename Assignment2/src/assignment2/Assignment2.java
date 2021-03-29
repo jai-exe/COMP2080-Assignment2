@@ -87,8 +87,8 @@ public class Assignment2 {
             String pname;
             System.out.println("Please enter Player name:");
             pname=sc.next();
-            Player pl= new Player(pname,45);
-            ArrayManager ht= new ArrayManager(101);
+            Player pl= new Player(pname);
+            ArrayManager ht= new ArrayManager();
             addWeapons(ht,sc);
             showRoom(ht, pl,sc);
             pl.printCharacter();

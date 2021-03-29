@@ -3,22 +3,22 @@ package assignment2;
 public class Player
     {
         public String name;
-        public Weapon[] backpack;
+        public Backpack backpack;
         public int numItems;
         public double money;
 
-        public Player(String n, double m)
+        public Player(String n)
         {
             name = n;
-            money = m;
+            money = 45;
             numItems = 0;
-            backpack = new Weapon[10];
+            backpack = new Backpack();
         }
 
         public void buy(Weapon w)
         {
             System.out.println(w.weaponName+" bought...");
-            backpack[numItems] = w;
+            backpack.addFront(w);
             numItems++;
             System.out.println(numItems);
         }
@@ -40,12 +40,8 @@ public class Player
 
         public void printBackpack()
         {
-             System.out.println(" "+name+", you own "+numItems+" Weapons:");
-            for (int x = 0; x < numItems; x++)
-            {
-                 System.out.println(" "+backpack[x].weaponName);
-            }
-            System.out.println();
+            System.out.println(" "+name+", you own "+numItems+" Weapons:");
+            backpack.printList();
         }
     }
 

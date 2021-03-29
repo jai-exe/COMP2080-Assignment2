@@ -2,13 +2,14 @@ package assignment2;
 
 public class ArrayManager {
     
-        int maxItems;    // records the max size of the table
-        int numItems;       // records number of items in the list
-        ShopItem[] table; //hashtable itself
+        private int maxItems;    // records the max size of the table
+        private int numItems;       // records number of items in the list
+        private ShopItem[] table; //hashtable itself
+        private double loadFactor = 0.75;
 
-        public ArrayManager(int size)
+        public ArrayManager()
         {
-            maxItems = size;
+            maxItems = 80;
             numItems = 0;
             table = new ShopItem[maxItems];
         }
@@ -41,7 +42,10 @@ public class ArrayManager {
             int count = 0;
             for (int x = 0; x < numItems; x++)
             {
-                    System.out.println("Name: " +table[x].item.weaponName+"   Damage:"+table[x].item.damage+"    Cost:"+table[x].item.cost+"     Quantity in stock:"+table[x].numberInStock);
+                    System.out.println("Name: " +table[x].item.weaponName+
+                            "\nDamage:"+table[x].item.damage+
+                            "\nCost:"+table[x].item.cost+
+                            "\nQuantity in stock:"+table[x].numberInStock);
             }
         }
 }
