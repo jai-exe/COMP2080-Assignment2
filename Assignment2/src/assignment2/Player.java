@@ -1,47 +1,45 @@
 package assignment2;
 
-public class Player
-    {
-        public String name;
-        public Backpack backpack;
-        public int numItems;
-        public double money;
 
-        public Player(String n)
-        {
-            name = n;
-            money = 45;
-            numItems = 0;
-            backpack = new Backpack();
-        }
 
-        public void buy(Weapon w)
-        {
-            System.out.println(w.weaponName+" bought...");
-            backpack.addFront(w);
-            numItems++;
-            System.out.println(numItems);
-        }
-        public void withdraw(double amt)
-        {
-            money = money - amt;
-        }
+	public class Player {
+	
 
-        public boolean inventoryFull()
-        {
-            return (numItems == 10) ;
-        }
+	    public String name;
+	    public double money;
+	    public Backpack backpack;
+	
 
-        public void printCharacter()
-        {
-            System.out.println(" Name:"+name+"\n Money:"+money);
-            printBackpack();
-        }
+	    public Player(String n, double m, int bpSize, double lf) {
+	        name = n;
+	        money = m;
+	        //numItems = 0;
+	        backpack = new Backpack(bpSize, lf);
+	    }
+	
 
-        public void printBackpack()
-        {
-            System.out.println(" "+name+", you own "+numItems+" Weapons:");
-            backpack.printList();
-        }
-    }
+	    public void buy(Weapon w) {
+	        if (backpack.itemsMaxed(1)) {
+	            System.out.println("You have no more room in your backpack!");
+	            return;
+	        }
+	
 
+	        System.out.println(w.weaponName + " bought...");
+	        backpack.add(w);
+	        System.out.println("Number of items you own: " + backpack.numItems);
+	    }
+	
+
+	    public void withdraw(double amt) {
+	        money = money - amt;
+	    }
+	
+
+	    public void printCharacter() {
+	        System.out.println(" Name:" + name + "\n Money:" + money);
+	        backpack.printBackpack();
+	    }
+	
+
+	}
